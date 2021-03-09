@@ -1,7 +1,7 @@
 import pandas as pd
-from keras.models import Model
-from keras.layers import Input, Embedding, Dense, GRU, Bidirectional, TimeDistributed, Lambda
-from keras.callbacks import ModelCheckpoint
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Embedding, Dense, GRU, Bidirectional, TimeDistributed, Lambda
+from tensorflow.keras.callbacks import ModelCheckpoint
 
 from .attention import Attention
 
@@ -205,7 +205,7 @@ class HAN(Model):
         # split sentences into words
         ori_words = [x.split() for x in ori_sents]
         # truncate attentions to have equal size of number of words per sentence
-        truncated_att = [i[-1 * len(k):] for i, k in zip(word_att, ori_words)]
+        truncated_att = [i[:len(k)] for i, k in zip(word_att, ori_words)]
 
         # create word attetion pair as dictionary
         word_att_pair = []

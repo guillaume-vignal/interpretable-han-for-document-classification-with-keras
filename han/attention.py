@@ -1,6 +1,6 @@
-import keras
-from keras.engine.topology import Layer
-from keras import backend as K
+from tensorflow import keras
+from tensorflow.python.keras.layers import Layer
+from tensorflow.keras import backend as K
 
 from han.utils import k_dot
 
